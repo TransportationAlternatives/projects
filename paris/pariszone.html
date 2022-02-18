@@ -1,0 +1,130 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Paris' Car-Free Zone in NYC | NYC 25x25 | Transportation Alternatives</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Montserrat:wght@400;500;700&family=Roboto+Mono&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<meta property="og:title" content="Paris' Car-Free Zone in NYC | NYC 25x25 | Transportation Alternatives" />
+<meta name="author" content="Transportation Alternatives" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="When we saw the proposed car-free zone in Paris, it got us wondering, what would that look like in New York City?"/>
+<meta property="og:description" content="When we saw the proposed car-free zone in Paris, it got us wondering, what would that look like in New York City?" />
+<meta property="og:site_name" content="Paris' Car-Free Zone in NYC | NYC 25x25 | Transportation Alternatives" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Paris' Car-Free Zone in NYC | NYC 25x25 | Transportation Alternatives" />
+<meta name="twitter:site" content="@transalt" />
+<meta property="og:image" content="https://raw.githubusercontent.com/TransportationAlternatives/projects/main/images/carfree.png" />
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/TransportationAlternatives/projects/main/images/carfree.png">
+<style>
+body { margin: 0; padding: 0; }
+#popup {
+	z-index: 54;
+}
+.mgl-map-overlay {
+   position: absolute;
+   top: 10px;
+   left: 10px;
+   z-index: 1;
+}
+p {
+	font-family: 'Inter', system-ui, sans-serif;
+	font-size: 18px;
+	color: #414042;
+}
+ a.nlink {
+      color: white;
+      text-decoration: none;
+      margin-left: 8px;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    #shape {
+ position: absolute;
+ overflow: hidden;
+	}
+    #map {
+        width: 100%;
+        height: 100vh;
+    }
+    .leaflet-zoom-box {
+    display: none;
+}
+button {
+      font-family: 'Montserrat', sans-serif;
+      border-radius: 0;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #414042;
+    }
+    .btn {
+    	border-radius: 0;
+    	background-color: #414042;
+    	color: white;
+    }
+
+    a {
+    	border-bottom: 2px solid #414042;
+    	text-decoration: none;
+    	color: #414042
+    }
+</style>
+</head>
+
+
+  </div>
+</div>
+<nav class="navbar navbar-dark fixed-top" style="background-color: #414042 !important; color: white">
+      <div class="container-fluid">
+       <span class="" style="font-family: 'Inter', system-ui, sans-serif;"><img src="t-mark.svg" height="20px" class="d-inline-block align-text-top" style="margin-right: 5px; "> Paris' Car-Free Zone
+          </span>
+          <div>
+            
+            <a class="nlink" target="_blank" href="https://www.transalt.org/take-action">Get involved</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container" style="padding-top: 75px; padding-bottom: ">
+    	<div class="row d-flex justify-content-center">
+	<div class="col-md-8">
+		<h1>What would Paris' proposed car-free zone look like in New York City?</h1>
+		<p style="padding-top: 25px;">When we saw the proposed car-free zone in Paris, it got us wondering, "What would that look like in New York City?"</p>
+		<p style="padding-bottom: 12px;">Check out the map below to see what the zone coming to Paris in 2024 would look like in the city. We can make this possible here with <a href="https://nyc25x2.org"><em>NYC 25x25</em></a>, our vision to reclaim 25 percent of space for cars and turn it into space for people by 2025.</p>
+		<a href="#map"><button type="button" class="btn btn-lg" style="margin-bottom: 48px;">See the map</button></a>
+	</div>
+</div>
+</div>
+<div style=" display: flex;
+  align-items: center;
+  justify-content: center;">
+	<div style="position:; z-index: 1000;" id="shape">
+		<img id="" src="https://raw.githubusercontent.com/TransportationAlternatives/projects/bb48469614bdfbd23dc068b8ffb3ef464058d575/images/map.svg" width="275px"></div>
+	<div id="map"></div>
+</div>
+
+<script>
+    var map = L.map('map', { zoomControl:false,  scrollWheelZoom: false, touchZoom: false }).setView([40.747401382848594, -73.96983010648414], 13); 
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+    	zoomOffset: -1,
+    	zoomControl: false,
+    	scrollWheelZoom: false,
+        accessToken: 'pk.eyJ1IjoiamFjb2JkZWNhc3RybyIsImEiOiJja3dtZGV5aWsyYjJmMndub2R3cTBuazIyIn0.DaRqJP0ez4gMNtcslbVakQ'
+    }).addTo(map);
+
+
+
+</script>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+ 
+</body>
+</html>
