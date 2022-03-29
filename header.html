@@ -1,0 +1,101 @@
+
+	<style type="text/css">
+		body {
+			background-color: black;
+			color: white;
+			font-family: 'Gotham';
+			text-align: center;
+			overflow-x: hidden;
+		}
+		.wrapper {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		.tail { // star
+		  position: relative;
+		  width: 0px;
+		  height: 3px;
+		  background-color: #FF5555;
+		  position: fixed;
+		  animation-name: particleAnimation;
+		  animation-timing-function: linear;
+		  animation-iteration-count: infinite;
+		}
+
+		.tail::before{ // star tail
+		  position: relative;
+		  display: block;
+		  content: "";
+		  width: 800px;
+		  right: 1px;
+		  height: 3px;
+		  background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(255, 85, 85, 1.0) 100%); 
+		}
+
+		.headlight { // star
+		  position: relative;
+		  width: 0px;
+		  height: 0px;
+		  background-color: #FF5555;
+		  position: fixed;
+		  animation-name: particleAnimationTwo;
+		  animation-timing-function: linear;
+		  animation-iteration-count: infinite;
+		}
+
+		.headlight::before{ // star tail
+		  position: relative;
+		  display: block;
+		  content: "";
+		  width: 800px;
+		  right: 1px;
+		  height: 3px;
+		  background: linear-gradient(to right, rgba(255,255,255, 1.0) 0%, rgba(255, 244, 235, 0.2) 100%); 
+		}
+
+		figure:nth-of-type(1) { animation-duration: 5s; }
+		figure:nth-of-type(2) { animation-duration: 9s; }
+		figure:nth-of-type(3) { animation-duration: 7s; }
+
+		figure:nth-of-type(4) { animation-duration:	6s; }
+		figure:nth-of-type(5) { animation-duration: 4s; }
+		figure:nth-of-type(6) { animation-duration: 8s; }
+
+		@keyframes particleAnimation {
+			from {
+				left: -1000px;
+			}
+			to {
+				left: calc(100% + 1000px);
+			}
+		}
+
+		@keyframes particleAnimationTwo {
+			from {
+				right: -1000px;
+			}
+			to {
+				right: calc(100% + 1000px);
+			}
+		}
+	</style>
+
+<div class="box">
+	<div class="wrapper">
+		<div class="lights">
+			<figure class="tail" style="margin-top: 80px"></figure>
+			<figure class="tail" style="margin-top: 100px"></figure>
+			<figure class="tail" style="margin-top: 120px"></figure>
+
+			<figure class="headlight" style="margin-top: -120px"></figure>
+			<figure class="headlight" style="margin-top: -100px"></figure>
+			<figure class="headlight" style="margin-top: -80px"></figure>
+		</div>
+		<div class="text">
+			<h1 style="font-size: 3em; color: white; margin-bottom: .3em;">Speeding Doesn't Sleep</h1>
+			<h2 style="font-size: 1.25em; line-height: 1.3em;">The Deadly Practice of Restricting the Operating Hours of New York City’s Speed Safety Cameras</h2>		
+		</div>
+	</div>
+</div>
